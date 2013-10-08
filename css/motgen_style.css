@@ -1,0 +1,15 @@
+.motgen_input {
+	font-size: 12px;
+	margin: 10px auto;
+}
+
+.motgen_new_poster_div {
+	text-align: center;
+	
+}
+
+.motgen_new_poster {
+	width: inherit;
+	border-radius: 0;
+	border: 0;
+}
