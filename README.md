@@ -10,7 +10,7 @@ FAQ
 
 #### So how do I run this thing?
 
-In order to use the plugin, activate it under `"Plugins"` menu and use a shortcode [motgen_plugin]
+In order to use the plugin, activate it under `"Plugins"` menu and use a shortcode `[motgen_plugin]`.
 
 
 #### Does this plugin store original images people upload?
