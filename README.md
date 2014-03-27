@@ -10,47 +10,46 @@ Changelog
 
 The plugin was rebuilt completely.
 
-Live Preview is now available.
-All image processing is now done on the client side using HTML5 and JavaScript.
-Can now create WordPress posts with posters as content.
-`"Thank you"` page is now editable from the `"Settings"` page.
-Settings form and list of posters are now split into two different pages.
+Live Preview is now available.  
+All image processing is now done on the client side using HTML5 and JavaScript.  
+Can now create WordPress posts with posters as content.  
+`"Thank you"` page is now editable from the `"Settings"` page.  
+Settings form and list of posters are now split into two different pages.  
 Can now access `"Edit Post"` page from list of posters.
 
 #### 1.3.6
 
-Default directories bug fixed
+Default directories bug fixed.
 
 #### 1.3.5
 
-Fixed redirecting bug when nothing happens after a poster is created
+Fixed redirecting bug when nothing happens after a poster is created.
 
 #### 1.3.4
 
-Resizing algorithm fixed
+Resizing algorithm fixed.
 
 #### 1.3.3
 
-Bugfixes
+Bugfixes.
 
 #### 1.3.2 
 
-Fixed incorrect dimension calculation for square images
+Fixed incorrect dimension calculation for square images.
 
 #### 1.3.1
 
-Fixed a major bug with posters stored in plugin directory being deleted when the plugin updates
-Fixed error with page redirect when poster not found
+Fixed a major bug with posters stored in plugin directory being deleted when the plugin updates.  
+Fixed error with page redirect when poster not found.
 
 #### 1.3
 
-Fixed error with incorrect session expiring.
-Improved image quality on resize.
-Image resize is now optional.
-Improved performance.
-Small bugfixes.
-
-New: Can select where to save posters in admin panel.
+Fixed error with incorrect session expiring.  
+Improved image quality on resize.  
+Image resize is now optional.  
+Improved performance.  
+Small bugfixes.  
+New: Can select where to save posters in admin panel.  
 New: Can use custom fonts.
 
 #### 1.2
@@ -59,7 +58,7 @@ Bugfixes.
 
 #### 1.1
 
-Can now open posters directly from admin panel.
+Can now open posters directly from admin panel.  
 Fixed packaging.
 
 #### 1.0 
