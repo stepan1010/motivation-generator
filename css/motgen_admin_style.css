@@ -16,12 +16,6 @@ td {
 	text-align: center;
 }
 
-.motgen_pagination {
-	text-align: center;
-	font: 18px;
-	margin-top: 20px;
-}
-
 .motgen_admin_link {
 	text-decoration: none;
 }
@@ -42,13 +36,5 @@ td {
 	float:right;
 	text-align:right;
 	font-style: oblique;
-	margin-right: 10px;
 	text-decoration: none;
-}
-
-.motgen_poster_table_caption {
-	font-size: 16px;
-	font-weight: bold;
-	display:block;
-	float:left;
 }

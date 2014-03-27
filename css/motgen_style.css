@@ -1,15 +1,28 @@
-.motgen_input {
-	font-size: 12px;
-	margin: 10px auto;
+#motgen_poster_canvas {
+	position: absolute;
+	max-height: 600px;
+	max-width: 600px;
+	display: none;
 }
 
-.motgen_new_poster_div {
-	text-align: center;
-	
+#motgen_form_wrapper {
+	display: block;
 }
 
-.motgen_new_poster {
-	width: inherit;
-	border-radius: 0;
-	border: 0;
+#motgen_loading_icon, #motgen_error_message_area, #motgen_generator_form {
+	display: none;
+}
+
+#motgen_loading_icon {
+	max-width: 16px;
+}
+
+.motgen_poster {
+border-radius: 0px;
+border-style: none;
+}
+
+@font-face {
+    font-family: 'FreeSerif';
+    src: url('fonts/FreeSerif.ttf');
 }
