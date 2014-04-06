@@ -3,7 +3,7 @@
 Plugin Name: Motivation Generator
 Plugin URI: http://stepasyuk.com/motivation/
 Description: Allows to create (de)motivational posters.
-Version: 2.0.0
+Version: 2.0.1
 Author: Stepan Stepasyuk
 Author URI: http://stepasyuk.com
 License: GPLv2
@@ -84,6 +84,7 @@ function motgen_uninstall()
 	delete_option('motgen_destination_folder');
 	delete_option('motgen_default_upload_url');
 	delete_option('motgen_default_upload_path');
+	delete_option('motgen_thank_you_page');
 	delete_option('motgen_turn_posters_to_wp_posts');
 }
 

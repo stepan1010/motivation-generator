@@ -45,12 +45,12 @@
 			$settings_form .= '<font color=red>'.get_option('motgen_default_upload_path').get_option('motgen_destination_folder').' Can not be created. Please check your file permissions.</font>';
 		}
 	}
-	// Form inputs
+	// Settings' form inputs
 	$settings_form .= '<p>Enter maintext font size: <input type="text" name="motgen_maintext_font_size" value="'.get_option('motgen_maintext_font_size').'" /></p>';
 	$settings_form .= '<p>Enter subtext font size: <input type="text" name="motgen_subtext_font_size" value="'.get_option('motgen_subtext_font_size').'"></p>';
 	$settings_form .= '<p>"Thank you" page:</p> <textarea cols="70" rows="5" name="motgen_thank_you_page" id="motgen_thank_you_page" >' . str_replace("\\", "", get_option('motgen_thank_you_page')) . '</textarea>';
 
-	// Assigning "selected" value to appropriate option in select input below
+	// Assigning "selected" value to appropriate option for select input below
 	$display_poster_on_thank_you_screen = get_option('motgen_turn_posters_to_wp_posts') == "2" ? 'selected' : '' ;
 	$do_turn_to_wp_post = get_option('motgen_turn_posters_to_wp_posts') == "1" ? 'selected' : '' ;
 	$dont_turn_to_wp_post = get_option('motgen_turn_posters_to_wp_posts') == "0" ? 'selected' : '' ;
@@ -61,9 +61,19 @@
 	$settings_form .= '<option value=2 ' . $display_poster_on_thank_you_screen . '>Display poster to the user on "Thank you" screen and save the poster to disk.</option>';
 	$settings_form .= '<option value=0 ' . $dont_turn_to_wp_post . '>Nothing. Just save poster to disk.</option></select></p>';
 
+	// Submit button
 	$settings_form .= '<input type="hidden" name="motgen_save_changes" value="Y" />';
 	$settings_form .= '<input type="submit" value="Save Options" />';
-	$settings_form .= '</form><br /><br />';
+	$settings_form .= '</form>';
+
+	// Donate button
+	$settings_form .= '<br /><p>Please donate to this plugin if you like it.';
+	$settings_form .= '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">';
+	$settings_form .= '<input type="hidden" name="cmd" value="_s-xclick">';
+	$settings_form .= '<input type="hidden" name="hosted_button_id" value="9YJ6YFV7EJ8PG">';
+	$settings_form .= '<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">';
+	$settings_form .= '<img alt="" border="0" src="https://www.paypalobjects.com/ru_RU/i/scr/pixel.gif" width="1" height="1"></form></p>';
+
 
 	echo $settings_form; // Pring settings form   
 ?>
