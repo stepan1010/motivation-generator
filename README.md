@@ -6,6 +6,10 @@ Motivation Generator is a WordPress plugin which allows you to create (de)motiva
 Changelog
 ====
 
+#### 2.0.2
+
+Fixed bug when plugin was not working properly with permalinks style set to "Default".
+
 #### 2.0.1
 
 Fixed a tiny bug when not all options were being deleted when uninstalling the plugin.  
@@ -54,7 +58,7 @@ Improved image quality on resize.
 Image resize is now optional.  
 Improved performance.  
 Small bugfixes.  
-New: Can select where to save posters in admin panel.  
+New: Can select where to save posters from `"Settings"` page.  
 New: Can use custom fonts.
 
 #### 1.2
@@ -63,7 +67,7 @@ Bugfixes.
 
 #### 1.1
 
-Can now open posters directly from admin panel.  
+Can now open posters directly from `"Settings"` page.  
 Fixed packaging.
 
 #### 1.0 
