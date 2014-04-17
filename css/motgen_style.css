@@ -26,3 +26,9 @@ border-style: none;
     font-family: 'FreeSerif';
     src: url('fonts/FreeSerif.ttf');
 }
+
+#motgen_font_loader {
+	font-family: FreeSerif !important;
+	visibility: hidden !important;
+	position: absolute !important;
+}

@@ -16,8 +16,8 @@
 */
 
 // This function is fired when user clicks "Upload"
-function motgen_load_image() {
-    
+function motgen_load_image(sender) {
+        
     // First, we make our loading icon visible.
     var loading_icon = document.getElementById('motgen_loading_icon');
     loading_icon.style.display = "inline";
@@ -25,6 +25,15 @@ function motgen_load_image() {
     var canvas = document.getElementById("motgen_poster_canvas");
     var context = canvas.getContext("2d");
     canvas.style.display = "none";
+
+    /* This function can also be fired by changing a font (because it need to redraw the frame around the picture).
+    *  In this case there is no need to reload the orginal picture again. We will just use one that we have already loaded.
+    */
+    if(sender === 'font'){
+        var img = document.getElementById('motgen_raw_background_picture');
+        motgen_image_loaded();
+      return;
+    }
 
     var input, file, fr, img;
 
@@ -85,14 +94,28 @@ function motgen_load_image() {
     // Pass created image to the FileReader
     function motgen_create_image() {
         img = new Image();
+        img.id = "motgen_raw_background_picture";
         img.onload = motgen_image_loaded;
         img.src = fr.result;
+        img.style.display = "none";
+        var div = document.getElementById('motgen_raw_background_placeholder');
+
+        // Remove all previous children before appending (just in case the user pressed "Upload" button twice or change font)
+        while (div.firstChild) {
+            div.removeChild(div.firstChild);
+        }
+
+        div.insertBefore(img, div.firstChild);
     }
 
     // Once our file is loaded we start to create a image out of it.
     function motgen_image_loaded() {
     	var maintext_font_size = parseInt(document.getElementById("motgen_mainline_font_size").value);
     	var subtext_font_size = parseInt(document.getElementById("motgen_subline_font_size").value);
+
+        // If entered fonts are not valid number, use defaults then
+        if (isNaN(maintext_font_size)) { maintext_font_size = 60; }
+        if (isNaN(subtext_font_size)) { subtext_font_size = 60; }
 
         // First, calculate dimensions for our future image
         motgen_calculate_canvas_dimensions(function(){
@@ -108,6 +131,8 @@ function motgen_load_image() {
                     document.getElementById('motgen_generator_form').style.display = "block";
                     // Also we got to hide that loading icon
                     loading_icon.style.display = "none";
+
+                    motgen_type_text();
 
                 });
             });    
@@ -228,7 +253,11 @@ function motgen_type_text() {
 	var canvas = document.getElementById("motgen_poster_canvas");
     var background = document.getElementById("motgen_background_picture");
 
-    // Draw poster first 
+    // If entered fonts are not valid number, use defaults then
+    if (isNaN(maintext_font_size)) { maintext_font_size = 60; }
+    if (isNaN(subtext_font_size)) { subtext_font_size = 60; }
+
+    // Draw poster first
 	var context = canvas.getContext("2d");
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	context.drawImage(background, 0, 0);
