@@ -29,7 +29,7 @@ function motgen_load_image(sender) {
     /* This function can also be fired by changing a font (because it need to redraw the frame around the picture).
     *  In this case there is no need to reload the orginal picture again. We will just use one that we have already loaded.
     */
-    if(sender === 'font'){
+    if(sender === 2){
         var img = document.getElementById('motgen_raw_background_picture');
         motgen_image_loaded();
       return;
@@ -95,7 +95,6 @@ function motgen_load_image(sender) {
     function motgen_create_image() {
         img = new Image();
         img.id = "motgen_raw_background_picture";
-        img.onload = motgen_image_loaded;
         img.src = fr.result;
         img.style.display = "none";
         var div = document.getElementById('motgen_raw_background_placeholder');
@@ -106,6 +105,8 @@ function motgen_load_image(sender) {
         }
 
         div.insertBefore(img, div.firstChild);
+
+        img.onload = motgen_image_loaded;
     }
 
     // Once our file is loaded we start to create a image out of it.
@@ -131,8 +132,6 @@ function motgen_load_image(sender) {
                     document.getElementById('motgen_generator_form').style.display = "block";
                     // Also we got to hide that loading icon
                     loading_icon.style.display = "none";
-
-                    motgen_type_text();
 
                 });
             });    

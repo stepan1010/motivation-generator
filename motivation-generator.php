@@ -3,7 +3,7 @@
 Plugin Name: Motivation Generator
 Plugin URI: http://stepasyuk.com/motivation/
 Description: Allows to create (de)motivational posters.
-Version: 2.0.2
+Version: 2.0.4
 Author: Stepan Stepasyuk
 Author URI: http://stepasyuk.com
 License: GPLv2
@@ -19,7 +19,7 @@ License: GPLv2
 
 /* This hook triggers before any content has been loaded to the page in order to check if 
 * the plugin is up to date. */ 
-add_action('init', 'motgen_check_version');
+add_action('plugins_loaded', 'motgen_check_version');
 function motgen_check_version()
 {
 	if(!get_option('motgen_version') || get_option('motgen_version') < 13){
@@ -94,6 +94,8 @@ function motgen_activate()
 {
 	// Create a table for our plugin to store info about created posters
 	global $wpdb;
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
 	$table_name = $wpdb->prefix . "mot_gen";
 	$sql = "CREATE TABLE $table_name (
 	  id bigint(20) NOT NULL AUTO_INCREMENT,
@@ -104,11 +106,10 @@ function motgen_activate()
 	  main_text varchar(25) NOT NULL,
 	  sub_text varchar(48) NOT NULL,
 	  author varchar(55) DEFAULT '' NOT NULL,
-	  poster_wp_post_id int(4) NOT NULL
+	  poster_wp_post_id int(4) NOT NULL,
 	  UNIQUE KEY id (id)
 	);";
 
-	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
 
 	// Default main text font size
@@ -214,7 +215,7 @@ function motgen_generator()
 	// File input
     $generator .= '<p> Please select a picture you would like to turn into a post and click "Upload". <input type="file" id="motgen_imgfile" />';
     // Upload button and Loading icon
-    $generator .= '<input type="button" id="motgen_loadimgfile" value="Upload" onclick="motgen_load_image(\'button\');" /><div id="motgen_loading_icon_placeholder"><img id="motgen_loading_icon" src="' . plugins_url( 'images/loader.gif' , __FILE__ ) . '"></div></p>';
+    $generator .= '<input type="button" id="motgen_loadimgfile" value="Upload" onclick="motgen_load_image(1);" /><div id="motgen_loading_icon_placeholder"><img id="motgen_loading_icon" src="' . plugins_url( 'images/loader.gif' , __FILE__ ) . '"></div></p>';
 	
 	$generator .= '<div id="motgen_raw_background_placeholder"></div>';
 	$generator .= '<div id="motgen_poster_placeholder"></div>';
@@ -224,9 +225,9 @@ function motgen_generator()
 	// Input form (for maintext and subtext)
 	$generator .= '<form id="motgen_generator_form" name="motgen_generator_form" accept-charset="UTF-8" enctype="multipart/form-data" action='.$_SERVER['REQUEST_URI'].' method="POST">';
 	$generator .= '<div id="motgen_form_wrapper"><p>Enter main text:* <input type="text" id="motgen_poster_mainline" name="motgen_poster_mainline" tabindex=2 required="required" onkeyup="motgen_type_text();">';
-	$generator .= ' Font size: <input type="text" id="motgen_mainline_font_size" size=3 value="'. get_option('motgen_maintext_font_size') .'" tabindex=4 onkeyup="motgen_load_image(\'font\');">&nbsp px</p>';
+	$generator .= ' Font size: <input type="text" id="motgen_mainline_font_size" size=3 value="'. get_option('motgen_maintext_font_size') .'" tabindex=4 onkeyup="motgen_load_image(2);">&nbsp px</p>';
 	$generator .= '<p>Enter sub text: &nbsp&nbsp<input type="text" id="motgen_poster_subline" name="motgen_poster_subline" tabindex=3 onkeyup="motgen_type_text();">';
-	$generator .= ' Font size: <input type="text" id="motgen_subline_font_size" size=3 value="'. get_option('motgen_subtext_font_size') .'" tabindex=5 onkeyup="motgen_load_image(\'font\');">&nbsp px</p></div>';
+	$generator .= ' Font size: <input type="text" id="motgen_subline_font_size" size=3 value="'. get_option('motgen_subtext_font_size') .'" tabindex=5 onkeyup="motgen_load_image(2);">&nbsp px</p></div>';
     
     // Hidden input for created poster (For more info see motivation-generator.js) 
     $generator .= '<input type="hidden" id="motgen_created_poster" name="motgen_created_poster" value="">';

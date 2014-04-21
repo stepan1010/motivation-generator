@@ -6,6 +6,11 @@ Motivation Generator is a WordPress plugin which allows you to create (de)motiva
 Changelog
 ====
 
+#### 2.0.4
+
+Fixed bug when uploaded images weren't showing sometimes.  
+Fixed database bug when clean installation didn't create a database table properly.
+
 #### 2.0.3
 
 Plugins font is now being preloaded (eliminates Fout).  
